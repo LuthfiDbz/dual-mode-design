@@ -5,8 +5,9 @@ import lightIcon from "../assets/icon/ic-light.png"
 import moment from "moment"
 
 export const Home = () => {
+  const currentTime = new Date().getHours()
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [isAM, setIsAM] = useState(false)
+  const [isAM, setIsAM] = useState(currentTime >= 12 ? false : true)
   const [currentHours, setCurrentHours] = useState("")
 
   const handleClickDarkMode = () => {
@@ -21,7 +22,7 @@ export const Home = () => {
 
   setInterval(() => {
     formatAMPM(new Date())
-    const currentTime = new Date().getMinutes()
+    const currentTime = new Date().getHours()
     currentTime >= 12 ? setIsAM(false) : setIsAM(true)
   }, 1000);
 
